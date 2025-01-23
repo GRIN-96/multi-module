@@ -8,7 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class RestApplication {
 
-    // 의존성 확인을 위한 코드 - 시작
+    /**
+     *  의존성 확인을 위한 코드 - 시작
+     */
     private final TestBean testBean;
 
     @Autowired
@@ -16,11 +18,18 @@ public class RestApplication {
         this.testBean = testBean;
     }
 
-    @PostConstruct
+    @PostConstruct // 의존성 주입 후 실행되게하는 ANNOTATION
     public void dependencyTest() {
         testBean.dependencyTest();
     }
-    // 의존성 확인을 위한 코드 - 끝
+
+    @PostConstruct // 의존성 주입 후 실행되게하는 ANNOTATION
+    public void dependencyTestCode() {
+        testBean.dependencyTestCode();
+    }
+    /**
+     *  의존성 확인을 위한 코드 - 끝
+     */
 
     public static void main(String[] args) {
         SpringApplication.run(RestApplication.class, args);
